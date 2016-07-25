@@ -11,10 +11,6 @@ class WaypointsDrawer extends React.Component {
     this.setState({ open: !this.state.open });
   }
 
-  setWaypointsDrawerChildren (children) {
-    this.setState({ children });
-  }
-
   render() {
     return (
        <Drawer width={this.props.width} openSecondary={true} open={this.props.open} >

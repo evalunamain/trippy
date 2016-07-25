@@ -61,6 +61,7 @@ class AddStage extends React.Component {
 
     return (
       <Drawer width={this.props.width} openSecondary={true} open={this.props.open} >
+        <WaypointsDrawerHeader />
         <form className="waypoint-form" onSubmit={(e) => this.handleSubmit(e) }>
           <div className="waypoint-header-wrapper">
             < BookMark color={blueGrey500} style={iconStyle} />

@@ -70,9 +70,7 @@ class AddNote extends React.Component {
 
     return (
       <Drawer width={this.props.width} openSecondary={true} open={this.props.open} >
-        <WaypointsDrawerHeader
-          setSecondaryDrawer={this.props.setSecondaryDrawer}
-         />
+        <WaypointsDrawerHeader />
         <form className="waypoint-form" onSubmit={(e) => this.handleSubmit(e) }>
           <div className="waypoint-header-wrapper">
             < NoteAdd color={blueGrey500} style={iconStyle} />
