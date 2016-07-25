@@ -14,10 +14,11 @@
 * Authentication/ownership.
 * Server-side rendering.
 * Micro-ui polishing across app.
+* Mobile-version (?)
 
 ### Caveats ###
 * Chose to use material-ui to aid in focusing on functionality over style while working quickly. Any decisions it makes on a micro-ui level don't necessarily reflect the same ones that I would make.
-* As development on this began with a set time limit, mobile/client UA responsiveness is currently low priority. Traditionally I'd develop with those things (and things like ownership/validation) in mind as I went. I do believe in progressive enhancement! Tested on a 17" Macbook Air running latest Chrome.
+* As development on this began with a set time limit, mobile/client UA responsiveness is currently low priority (mobile would be its own app/set of concerns). Traditionally I'd develop with those things (and things like ownership/validation) in mind as I went. I do believe in progressive enhancement! Tested on a 17" Macbook Air running latest Chrome.
 
 
 ### Mainathon specs: ###
