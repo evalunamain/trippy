@@ -1,0 +1,29 @@
+//Waypoints drawer
+.waypoints-drawer-toolbar {
+  display: flex;
+  background: $teal300;
+  color: $almost-white;
+  cursor: pointer;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  &:hover {
+    background: $teal400;
+  }
+}
+
+.waypoint-header-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 10px;
+}
+
+.waypoint-header {
+  margin: 0;
+}
+
+.waypoint-form {
+  margin: 0 15px;
+}

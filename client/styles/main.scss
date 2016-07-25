@@ -1,0 +1,78 @@
+@import "settings";
+@import "index";
+@import "waypoints";
+@import "drawers";
+
+strong {color: red}
+
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family: Roboto, lato;
+}
+
+.chat-container {
+	left: 16px;
+	top: 16px;
+	position:relative;
+	height: 90vh;
+	width: 250px;
+}
+
+.chat-inner-container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.chat-form {
+	border-top: 1px solid gray;
+	bottom: 0;
+	display: flex;
+	position: absolute;
+	width: 100%;
+}
+
+.chat-input {
+	border: none;
+	box-sizing: border-box;
+	flex: 0 0 75%;
+}
+
+.chat-button {
+	border: none;
+	flex: 0 0 25%;
+}
+
+.currently-here-container {
+	position: absolute;
+	top: 16px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 200px;
+	height: auto;
+}
+
+.currently-here-transition-enter {
+  opacity: 0.01;
+}
+
+.currently-here-transition-enter.currently-here-transition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.currently-here-transition-leave {
+  opacity: 1;
+}
+
+.currently-here-transition-leave.currently-here-transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.blinking {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0.0; }
+}
