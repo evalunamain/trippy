@@ -7,16 +7,18 @@ let mongoose = require('mongoose');
 // let enVars = require('./enVars');
 
 let app = express();
-let compiler = webpack(config);
 
 mongoose.connect(process.env.MLAB_URI || require('./enVars').MLAB_URI);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath,
-}));
+if (process.env.NODE_ENV !== 'production') {
+	let compiler = webpack(config);
+	app.use(require('webpack-dev-middleware')(compiler, {
+	  noInfo: true,
+	  publicPath: config.output.publicPath,
+	}));
 
-app.use(require('webpack-hot-middleware')(compiler));
+	app.use(require('webpack-hot-middleware')(compiler));
+}
 
 //Get the routers in here!
 const tripRouter = express.Router();
