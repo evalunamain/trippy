@@ -11,17 +11,14 @@ import * as waypointActions from '../ducks/waypointsDuck';
 import { showSnackbar } from '../ducks/ui/snackbarDuck';
 import tripUiInitialState from './tripUiInitialState';
 
-import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import DirectionsRun from 'material-ui/svg-icons/maps/directions-run';
 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 import EnterAuthorModal from './dialogs/EnterAuthorModal';
 import ChatContainer from '../chat/ChatContainer';
 import MapsContainer from '../maps/MapsContainer';
-
+import CurrentAuthors from './CurrentAuthors'
 import TripSnackbar from './TripSnackbar';
 import WaypointsDrawer from './drawers/WaypointsDrawer';
 import AddStageDrawer from './drawers/AddStageDrawer';
@@ -124,15 +121,6 @@ class Trip extends React.Component {
   }
 
   render() {
-   // const { dialog, snackbar, drawer } = this.state;
-    const currentlyHere = Object.keys(this.props.currentAuthors).map(authorId => {
-      let firstTwo = this.props.currentAuthors[authorId].name.substring(0,2);
-      firstTwo = firstTwo.length < 1 ? '?' : firstTwo;
-
-      let blinkClass = this.props.currentAuthors[authorId].typing ? 'blinking' : '';
-      return <Avatar key={authorId + '_avatar'} className={blinkClass}>{firstTwo}</Avatar>;
-    });
-
     const backgroundMapStyle = {
       'position': 'absolute',
       'top': '0px',
@@ -144,14 +132,6 @@ class Trip extends React.Component {
       <div ref="trip">
         {this.getDrawerComponent(this.props.ui.drawer.drawer)}
         <MapsContainer style={backgroundMapStyle} />
-        <ReactCSSTransitionGroup 
-          className="currently-here-container" 
-          transitionName="currently-here-transition" 
-          transitionEnterTimeout={500} 
-          transitionLeaveTimeout={300}
-        >
-          {currentlyHere}
-        </ReactCSSTransitionGroup>
         <ChatContainer 
           messages={this.props.messages}
           author={this.props.author} 
@@ -159,6 +139,7 @@ class Trip extends React.Component {
           addMessage={this.props.addMessage}
           socket={socket}
         />
+        <CurrentAuthors />
         <IconButton tooltip="Waypoints" onClick={this.handleWaypointsIconClick.bind(this)} style={{ "position":"absolute", "top":"16px", "right":"60px" }}>
           <DirectionsRun />
         </IconButton>

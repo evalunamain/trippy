@@ -3,42 +3,8 @@
 @import "waypoints";
 @import "drawers";
 @import "chat";
+@import "trip";
 
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: Roboto, lato;
-}
-
-.currently-here-container {
-	position: absolute;
-	top: 16px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 200px;
-	height: auto;
-}
-
-.currently-here-transition-enter {
-  opacity: 0.01;
-}
-
-.currently-here-transition-enter.currently-here-transition-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.currently-here-transition-leave {
-  opacity: 1;
-}
-
-.currently-here-transition-leave.currently-here-transition-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
-
-.blinking {
-  animation: blinker 2s linear infinite;
-}
-
-@keyframes blinker {
-  50% { opacity: 0.0; }
 }
