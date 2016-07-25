@@ -16,7 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
 	  noInfo: true,
 	  publicPath: config.output.publicPath,
 	}));
-
 	app.use(require('webpack-hot-middleware')(compiler));
 }
 
@@ -25,9 +24,20 @@ const tripRouter = express.Router();
 require('./routes/trip_routes')(tripRouter);
 app.use('/api', tripRouter);
 
+if (process.env.NODE_ENV === 'production') {
+	app.get('/static/bundle.js', function(req,res) {
+		res.sendFile(path.join(__dirname, '/dist/bundle.js'));
+	});
+	app.get('/static/bundle.js.map', function(req,res) {
+		res.sendFile(path.join(__dirname, '/dist/bundle.js.map'));
+	});
+}
+
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+
 
 let port = process.env.port || 8080;
 let server = app.listen(port);

@@ -9,7 +9,7 @@ module.exports = {
     './client/trippy'
   ],
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -40,7 +40,7 @@ module.exports = {
       loader: 'string-replace',
       query: {
         multiple: [
-          {search: 'MAPS_KEY', replace: "'"+enVars.MAPS_KEY+"'"}
+          {search: 'MAPS_KEY', replace: "'"+enVars.MAPS_KEY+"';"}
         ]
       }
     },
