@@ -1,7 +1,6 @@
 let path = require('path');
 let express = require('express');
 let webpack = require('webpack');
-let config = require('./webpack.config.dev');
 let SocketIo = require('socket.io');
 let mongoose = require('mongoose');
 // let enVars = require('./enVars');
@@ -11,6 +10,7 @@ let app = express();
 mongoose.connect(process.env.MLAB_URI || require('./enVars').MLAB_URI);
 
 if (process.env.NODE_ENV !== 'production') {
+	let config = require('./webpack.config.dev');
 	let compiler = webpack(config);
 	app.use(require('webpack-dev-middleware')(compiler, {
 	  noInfo: true,
