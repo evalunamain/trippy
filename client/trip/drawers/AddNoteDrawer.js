@@ -3,6 +3,7 @@ import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { isEqual, omit } from 'lodash';
 import { saveWaypoint } from '../../ducks/waypointsDuck';
+import { setDrawer } from '../../ducks/ui/drawerDuck';
 
 import Drawer from 'material-ui/Drawer';
 import NoteAdd from 'material-ui/svg-icons/action/note-add';
@@ -56,8 +57,8 @@ class AddNote extends React.Component {
       }
     };
     socket.emit('new waypoint', waypoint);
-    this.props.saveWaypoint(waypoint);
-    this.props.setSecondaryDrawer('waypoints', 350, true);
+    dispatch(saveWaypoint(waypoint));
+    dispatch(setDrawer('waypoints',300,true));
   }
 
 
@@ -97,7 +98,7 @@ class AddNote extends React.Component {
 }
 
 AddNote.contextTypes = {
-  socket: React.PropTypes.func,
+  socket: React.PropTypes.object,
 }
 
 const mapStateToProps = state => Object.assign({}, { author: state.author });
