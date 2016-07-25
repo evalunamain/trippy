@@ -42,15 +42,16 @@ class Chat extends React.Component {
     const content = this.refs.message.value;
     const timestamp = Date.now();
     const msg = { author, content, timestamp, id: uuid.v4() };
-
     this.props.sendMessage(msg);
     socket.emit('new message', msg);
+
+    //Prefer single quotes but have to assign value with "";
+    this.refs.message.value = "";
   }
 
   render() {
     const messages = this.props.messages
       .map(msg => <Message key={msg.id} msg={msg} />);
-
     return (
       <div className="chat-inner-container">
 				<div className="messages-container">

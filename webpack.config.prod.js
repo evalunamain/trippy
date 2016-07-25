@@ -17,10 +17,13 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': 'production',
+        'NODE_ENV': "'production'",
         'MLAB_URI': JSON.stringify(enVars.MLAB_URI)
       }
     }),
+    new webpack.EnvironmentPlugin([
+      "NODE_ENV"
+    ]),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false

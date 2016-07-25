@@ -2,44 +2,10 @@
 @import "index";
 @import "waypoints";
 @import "drawers";
-
-strong {color: red}
+@import "chat";
 
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: Roboto, lato;
-}
-
-.chat-container {
-	left: 16px;
-	top: 16px;
-	position:relative;
-	height: 90vh;
-	width: 250px;
-}
-
-.chat-inner-container {
-	position: relative;
-	height: 100%;
-	width: 100%;
-}
-
-.chat-form {
-	border-top: 1px solid gray;
-	bottom: 0;
-	display: flex;
-	position: absolute;
-	width: 100%;
-}
-
-.chat-input {
-	border: none;
-	box-sizing: border-box;
-	flex: 0 0 75%;
-}
-
-.chat-button {
-	border: none;
-	flex: 0 0 25%;
 }
 
 .currently-here-container {
