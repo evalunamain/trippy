@@ -7,7 +7,7 @@
 
 ### In Progress. Todos: ###
 * Implement final index/entry design. It'll be way shiny!
-* Maps waypoint integration.
+* Integration of additional waypoints, Maps being highest priority. 
 * Authentication/ownership.
 * Server-side rendering.
 * Micro-ui polishing across app.
