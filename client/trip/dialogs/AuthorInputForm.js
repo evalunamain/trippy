@@ -6,9 +6,6 @@ class AuthorInputForm extends React.Component {
   handleChange(e) {
     e.preventDefault();
     const value = this.refs.name.value;
-   //  console.log(value);
-   //  debugger;
-   // //this.props.changeContentState({ value });
   }
 
   render() {

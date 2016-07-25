@@ -120,7 +120,6 @@ class Trip extends React.Component {
   }
 
   authorDialogNeeded() {
-    console.log((!this.props.author || !this.props.author.name));
     return (!this.props.author || !this.props.author.name);
   }
 

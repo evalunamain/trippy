@@ -2,7 +2,6 @@ import React from 'react';
 
 class Marker extends React.Component {
   componentDidUpdate(prevProps) {
-    console.log('didupdate');
     if ((this.props.map !== prevProps.map) ||
       (this.props.position !== prevProps.position)) {
     }
@@ -23,7 +22,6 @@ class Marker extends React.Component {
         position: position
       };
       this.marker = new google.maps.Marker(pref);
-      console.log('end renderMarker');
   }
 
   render() {

@@ -53,7 +53,6 @@ export function addMessage(msg) {
 }
 
 export function sendMessage(msg) {
-  console.log(msg);
   return (dispatch, getState) => {
     dispatch(addMessage(msg));
     let tripId = getState().trip.id;

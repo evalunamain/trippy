@@ -131,7 +131,6 @@ export function fetchTrip(tripId) {
       }).then(response => response.json())
           .then(json => {
             let trip = json;
-            console.log(trip);
             dispatch(addTrip(trip));
           });
   };
@@ -152,7 +151,6 @@ export function makingTrip() {
 }
 
 export function addTrip(trip) {
-  console.log(trip);
   return {
     type: ADD_TRIP,
     trip,

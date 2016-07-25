@@ -29,7 +29,6 @@ class Chat extends React.Component {
       this.setState({ typing: true});
     }
     if (e.target.value.length === 0 && this.state.typing) {
-      console.log('stopped');
       socket.emit('author stop typing', this.props.author.id);
       this.setState({ typing: false});
     }
