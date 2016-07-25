@@ -6,8 +6,9 @@
 * Real-time chat and real-time creation of Waypoints(Google Maps, Directions, Places, AirBnB listings, etc.) so that everyone can see these things in the same place at the same time.
 
 ### In Progress. Todos: ###
-* Implement final index/entry design. It'll be shiny!
+* Implement final index/entry design. It'll be way shiny!
 * Maps waypoint integration.
+* Authentication/ownership.
 * Server-side rendering.
 * Micro-ui polishing across app.
 
