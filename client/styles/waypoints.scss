@@ -27,3 +27,9 @@
 .waypoint-form {
   margin: 0 15px;
 }
+
+.waypoint-item:hover {
+  .waypoint-delete-icon {
+    display: block !important;
+  }
+}

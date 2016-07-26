@@ -1,5 +1,6 @@
 let Trip = require('../models/Trip');
 let bodyparser = require('body-parser');
+import { reject } from 'lodash';
 
 function docToClient(doc) {
   doc = doc.toObject();
@@ -66,7 +67,9 @@ module.exports = function (router) {
 
       let id = req.body.waypointId;
 
-      trip.waypoints[id].deleted =true;
+      delete trip.waypoints[id];
+      trip.waypointsById = reject(trip.waypointsById, waypoint => waypoint === id);
+      trip.markModified('waypoints');
       trip.save(function (err) {
         if (err) {
           console.log(err);
