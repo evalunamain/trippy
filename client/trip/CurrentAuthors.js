@@ -39,7 +39,6 @@ class CurrentAuthors extends React.Component {
       let blinkClass = this.props.currentAuthors[authorId].typing ? ' blinking' : '';
       let finalClass = `author-avatar${blinkClass}`;
       let backgroundColor = this.getAvatarColor(this.props.currentAuthors[authorId].name);
-      console.log(backgroundColor);
       return <Avatar 
         key={authorId + '_avatar'}
         size={30}
