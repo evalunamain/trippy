@@ -43,7 +43,7 @@ class WaypointsList extends React.Component {
 
     waypointGroups = waypointGroups.map((group) => {
       let newProps = {
-        waypoints: group
+        waypoints: group,
       }
       return < Waypoint {...newProps} />;
     });
