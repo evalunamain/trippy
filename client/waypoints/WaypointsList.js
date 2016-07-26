@@ -6,7 +6,7 @@ import { setDrawer } from '../ducks/ui/drawerDuck';
 
 import { List, ListItem } from 'material-ui/list';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import EventNote from 'material-ui/svg-icons/notification/event-note';
+import NoteAdd from 'material-ui/svg-icons/action/note-add';
 import Layers from 'material-ui/svg-icons/maps/layers';
 
 import Waypoint from './Waypoint';
@@ -16,39 +16,28 @@ class WaypointsList extends React.Component {
 
   handleItemClick(e) {
     const drawer = e.currentTarget.id;
-    this.props.setDrawer(drawer,300,true);
+    this.props.setDrawer(drawer, 300, true);
   }
 
   getWaypoints() {
-    let waypoints = this.props.waypointsById;
-    waypoints = waypoints ?
-                waypoints.map(waypointId => this.props.waypoints[waypointId])
-                : [];
-    let waypointGroups = [];
-    let group = [];
+    const { waypoints, waypointsById } = this.props;
+    if (!waypointsById || !waypointsById.length) return null;
 
-    let inStage;
-    waypoints.forEach((waypoint) => {
+    let curNestedItems = [];
+    let finalItems = [];
+    for (let i = waypointsById.length - 1; i >= 0; i--) {
+      let waypointId = waypointsById[i];
+      let waypoint = waypoints[waypointId];
+      let nestedItems = (waypoint.data.type === WAYPOINT_TYPES.STAGE) ? curNestedItems : [];
       if (waypoint.data.type === WAYPOINT_TYPES.STAGE) {
-        if (group.length) {
-          waypointGroups.push(group);
-        }
-        group = [waypoint];
-      } else {
-        group.push(waypoint);
+        finalItems = [<Waypoint nestedItems={nestedItems} {...waypoint} />, ...finalItems ]
+        curNestedItems = [];
       }
-    });
-
-    if (group.length) waypointGroups.push(group);
-
-    waypointGroups = waypointGroups.map((group) => {
-      let newProps = {
-        waypoints: group,
+      else {
+        curNestedItems = [<Waypoint nestedItems={[]} {...waypoint} />, ...curNestedItems];
       }
-      return < Waypoint {...newProps} />;
-    });
-
-    return waypointGroups || '';
+    }
+    return [...curNestedItems,...finalItems];
   }
 
   render() {
@@ -56,7 +45,6 @@ class WaypointsList extends React.Component {
 
     return (
       <List style={{"paddingTop":"0px","paddingBottom":"0px"}}>
-        {wayPoints}
         <ListItem
           leftIcon={<ContentAdd />}
           primaryText="Add Waypoint"
@@ -66,7 +54,7 @@ class WaypointsList extends React.Component {
             <ListItem
               id="addNote"
               key={1}
-              leftIcon={<EventNote />}
+              leftIcon={<NoteAdd />}
               primaryText="Note"
               onTouchTap={this.handleItemClick.bind(this)}
             />,
@@ -79,6 +67,7 @@ class WaypointsList extends React.Component {
             />
           ]}
         />
+        {wayPoints}
       </List>
     );
   }
