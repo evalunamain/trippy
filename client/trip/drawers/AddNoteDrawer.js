@@ -6,7 +6,7 @@ import { saveWaypoint } from '../../ducks/waypointsDuck';
 import { setDrawer } from '../../ducks/ui/drawerDuck';
 
 import Drawer from 'material-ui/Drawer';
-import NoteAdd from 'material-ui/svg-icons/action/note-add';
+import Subject from 'material-ui/svg-icons/action/subject';
 import TextField from 'material-ui/TextField';
 import { blueGrey500 } from 'material-ui/styles/colors';
 
@@ -73,7 +73,7 @@ class AddNote extends React.Component {
         <WaypointsDrawerHeader />
         <form className="waypoint-form" onSubmit={(e) => this.handleSubmit(e) }>
           <div className="waypoint-header-wrapper">
-            < NoteAdd color={blueGrey500} style={iconStyle} />
+            < Subject color={blueGrey500} style={iconStyle} />
             <h3 className="waypoint-header">Add Note</h3>
           </div>
           <TextField

@@ -11,37 +11,13 @@ import { deleteWaypoint } from '../ducks/waypointsDuck';
 import { WAYPOINT_TYPES } from '../constants';
 
 const icons = {
-  1: < Subject />
-}
+  1: < Subject />,
+};
 
 class Waypoint extends React.Component {
   handleDelete(waypointId) {
     const { dispatch } = this.props;
     dispatch(deleteWaypoint(waypointId));
-  }
-
-  getWaypointsList() {
-    const first = this.props.waypoints[0];
-    const isStage = first.data.type === WAYPOINT_TYPES.STAGE;
-    const isStageList = isStage && this.props.waypoints.length > 1;
-    let waypoints;
-
-    if (isStageList) {
-      let nestedItems = this.getListItems(this.props.waypoints.slice(1));
-
-      waypoints = <ListItem
-        key={first.id}
-        initiallyOpen={false}
-        primaryTogglesNestedList={true}
-        primaryText={first.data.title}
-        nestedItems={nestedItems}
-      />
-    } else {
-      waypoints = this.getListItems(this.props.waypoints);
-    }
-
-    return waypoints;
-
   }
 
   render() {
@@ -51,18 +27,19 @@ class Waypoint extends React.Component {
       'top': '10px',
       'right': '15px',
     };
-    const rightIconButton = <Delete color={grey600} style={iconStyle} className='waypoint-delete-icon' onClick={() => this.handleDelete(waypoint.id)} />;
+    const rightIconButton = <Delete color={grey600} style={iconStyle} className='waypoint-delete-icon' onClick={() => this.handleDelete(this.props.id)} />;
     let newProps = {
       ...this.props,
-      rightIconButton,
-      primaryTogglesNestedList: type === WAYPOINT_TYPES.STAGE ? true : false,
-      nestedItems:
-
+      primaryText: this.props.data.title,
+      primaryTogglesNestedList: type === WAYPOINT_TYPES.STAGE ? true : false
     };
+    if (!this.props.nestedItems.length) newProps.rightIconButton = rightIconButton;
+    const icon = icons[this.props.data.type];
+    if (icon) newProps.leftIcon = icon;
 
     return (
-      <ListItem className='waypoint'/>
-    )
+      <ListItem className='waypoint' {...newProps} />
+    );
   }
 
 }
