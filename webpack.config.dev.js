@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-import enVars  from './enVars';
+let enVars = require('./enVars');
 
 module.exports = {
   devtool: 'source-map',
