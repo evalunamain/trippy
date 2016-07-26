@@ -106,7 +106,7 @@ class Trip extends React.Component {
   }
 
   handleWaypointsIconClick() {
-    this.props.toggleDrawer();
+    this.props.setDrawer('waypoints',300,true);
   }
 
   fetchTripIfNeeded() {

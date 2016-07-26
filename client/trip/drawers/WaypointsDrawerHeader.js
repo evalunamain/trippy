@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDrawer } from '../../ducks/ui/drawerDuck';
+import { toggleDrawer } from '../../ducks/ui/drawerDuck';
 
 class WaypointsDrawerHeader extends React.Component {
   handleWaypointsHeaderClick() {
     const { dispatch } = this.props;
-    dispatch(setDrawer('waypoints',300,true));
+    dispatch(toggleDrawer());
   }
 
   render() {

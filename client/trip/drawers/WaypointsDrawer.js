@@ -7,10 +7,6 @@ import WaypointsDrawerHeader from './WaypointsDrawerHeader';
 
 class WaypointsDrawer extends React.Component {
 
-  handleToggle() {
-    this.setState({ open: !this.state.open });
-  }
-
   render() {
     return (
        <Drawer width={this.props.width} openSecondary={true} open={this.props.open} >
