@@ -44,7 +44,7 @@ export function addWaypoint(waypoint) {
 }
 
 export function deleteWaypoint(waypointId) {
-  return dispatch => {
+  return (dispatch, getState) => {
     let body = { waypointId };
     dispatch({ type: DELETE_WAYPOINT, waypointId });
     let tripId = getState().trip.id;

@@ -71,6 +71,7 @@ class AddStage extends React.Component {
             id="stageName"
             fullWidth={true}
             hintText="Enter a title"
+            autoFocus={true}
             onChange={this.handleChange.bind(this)} />
         </form>
       </Drawer>

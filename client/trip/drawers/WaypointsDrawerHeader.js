@@ -18,6 +18,4 @@ class WaypointsDrawerHeader extends React.Component {
   }
 };
 
-const mapStateToProps = state => Object.assign({}, { ...state.ui.drawer })
-
 export default connect()(WaypointsDrawerHeader);
