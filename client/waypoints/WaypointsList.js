@@ -16,39 +16,20 @@ class WaypointsList extends React.Component {
 
   handleItemClick(e) {
     const drawer = e.currentTarget.id;
-    this.props.setDrawer(drawer,300,true);
+    this.props.setDrawer(drawer, 300, true);
   }
 
   getWaypoints() {
-    let waypoints = this.props.waypointsById;
-    waypoints = waypoints ?
-                waypoints.map(waypointId => this.props.waypoints[waypointId])
-                : [];
-    let waypointGroups = [];
-    let group = [];
+    const { waypoints, waypointsById } = this.props;
+    if (!waypointsById || !waypointId.length) return null;
 
-    let inStage;
-    waypoints.forEach((waypoint) => {
-      if (waypoint.data.type === WAYPOINT_TYPES.STAGE) {
-        if (group.length) {
-          waypointGroups.push(group);
-        }
-        group = [waypoint];
-      } else {
-        group.push(waypoint);
-      }
-    });
-
-    if (group.length) waypointGroups.push(group);
-
-    waypointGroups = waypointGroups.map((group) => {
-      let newProps = {
-        waypoints: group
-      }
-      return < Waypoint {...newProps} />;
-    });
-
-    return waypointGroups || '';
+    let curNestedItems = [];
+    let finalItems = waypointsById.reduce((prevWaypoints,waypointId) => {
+      let waypoint = waypoints[waypointId];
+      let nestedItems = (waypoint.data.type === WAYPOINT_TYPES.STAGE) ? curNestedItems : null;
+      if (waypoint.data.type === WAYPOINT_TYPES.STAGE) curNestedItems = [];
+      return <Waypoint nestedItems={nestedItems} {...waypoint} />
+    }, []);
   }
 
   render() {

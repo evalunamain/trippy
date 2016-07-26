@@ -1,6 +1,6 @@
 import React from 'react';
 import Subject from 'material-ui/svg-icons/action/subject';
-import { List, ListItem } from 'material-ui/list';
+import { ListItem } from 'material-ui/list';
 
 import { WAYPOINT_TYPES } from '../constants';
 
@@ -9,17 +9,6 @@ const icons = {
 }
 
 class Waypoint extends React.Component {
-  getListItems(waypoints) {
-    return waypoints.map(waypoint => {
-      return <ListItem
-              id={waypoint.id}
-              key={waypoint.id}
-              leftIcon={icons[waypoint.data.type]}
-              primaryText={waypoint.data.title}
-            />
-    });
-  }
-
   getWaypointsList() {
     const first = this.props.waypoints[0];
     const isStage = first.data.type === WAYPOINT_TYPES.STAGE;
@@ -44,15 +33,18 @@ class Waypoint extends React.Component {
 
   }
 
-	render() {
-    const waypoints = this.getWaypointsList();
+  render() {
+    const type = this.props.data.type;
+    let newProps = {
+      ...this.props,
+      primaryTogglesNestedList: type === WAYPOINT_TYPES.STAGE ? true : false
+      
+    };
 
-		return (
-      <div>
-        {waypoints}
-      </div>
-		)
-	}
+    return (
+      <ListItem 
+    )
+  }
 
 }
 
