@@ -8,6 +8,7 @@
 ### In Progress. Todos (in relative order of importance): ###
 * Hookup maps waypoints.
 * Display waypoints/show waypoints to friends functionality.
+* Add ability to reorder waypoints.
 * Validation/sanitization everywhere. If you try really hard to break something at the moment you probably can.
 * Implement final index/entry design. It'll be way shiny!
 * Integration of additional waypoints, Maps being highest priority. 
