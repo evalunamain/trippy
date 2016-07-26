@@ -42,8 +42,8 @@ class Chat extends React.Component {
     const timestamp = Date.now();
     const msg = { author, content, timestamp, id: uuid.v4() };
     this.props.sendMessage(msg);
-    socket.emit('author stop typing', this.props.author.id);
     socket.emit('new message', msg);
+    socket.emit('author stop typing', this.props.author.id);
 
     //Prefer single quotes but have to assign value with "";
     this.refs.message.value = "";
